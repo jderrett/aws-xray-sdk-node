@@ -13,9 +13,11 @@ tasks:
       wget https://s3.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.x.deb
       sudo apt-get install ./aws-xray-daemon-3.x.deb
       cd $GITPOD_REPO_ROOT
+      gp sync-done xray
   # Run xray daemon
   - name: AWS XRay Daemon
-    init: npm install
+    init: gp sync-await xray
+    command: cd ../xray-install-files && ./xray
 
 
 
